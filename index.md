@@ -81,3 +81,38 @@ end
 ```
 
 ---
+
+# First graphic
+
+---
+
+# Second graphic
+
+---
+
+# Third graphic
+
+---
+
+# Page Caching Improvements
+
+- 2.5 to 8 seconds response dropped to <80 ms.
+
+- Server response became very consistent.
+
+- Site instantly felt much snappier.
+
+- It took little code to accomplish.
+
+- Client approved, the site launched.
+
+---
+# Page Caching Drawbacks
+
+- "Cache invalidation" required deleting files in /public
+
+- Had to refactor a user-specific portion of the site to function through AJAX.
+
+- Deviated from "The Rails Way."
+
+---
