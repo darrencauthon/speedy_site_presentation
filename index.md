@@ -4,11 +4,19 @@
 
 # Story of an unlaunched website
 
-A mobile homepage for a Fortune 50 company.
+- A mobile homepage for a Fortune 50 company.
 
-App built on Rails, jQuery Mobile.
+- Rails, RefineryCMS, jQuery Mobile.
 
-Client is excited.
+- Client is excited for the site.
+
+- Devs are excited for a green field to use latest tech.
+
+---
+
+# Four Months Later
+
+## I'm called in to rescue the project.
 
 ---
 
@@ -24,15 +32,15 @@ Client is excited.
 
 ---
 
-# Standard Operating Procedure
+# Standard Rescue Procedures
 
-Bring in new developers.
+- Bring in new developers.
 
-Build a list of must-haves for launch.
+- Build a list of must-haves for launch.
 
-Work the list
+- Work the list
 
-And at the top of their list was...
+- And at the top of their list was...
 
 ---
 
@@ -46,13 +54,29 @@ And at the top of their list was...
 
 A page on this _mobile-only_ site **took 2.5 to 8 seconds for a server response.**
 
-With jQuery Mobile, **the site felt even slower.**
+Server responses times were very **inconsistent**, and crashed under any load.
 
-###No Fast, No Launch - **PERIOD**
+With jQuery Mobile, **the site felt even slower.**
 
 ---
 
-## But the App was Perfect(ly Unfixable)
+# No Escape
+
+###Data sat in a poorly-designed MongoDB database.
+
+###Data used in multiple controllers, subsites.
+
+###The views were a mess.
+
+###The authors were incredibly opinionated.
+
+---
+
+![](yingyang.jpg)
+
+---
+
+# The Perfect Rails App
 
 ![](yingyang.jpg)
 
@@ -82,15 +106,15 @@ end
 
 ---
 
-# First graphic
+![](diagram1.png)
 
 ---
 
-# Second graphic
+![](diagram2.png)
 
 ---
 
-# Third graphic
+![](diagram3.png)
 
 ---
 
@@ -98,21 +122,98 @@ end
 
 - 2.5 to 8 seconds response dropped to <80 ms.
 
-- Server response became very consistent.
+- Server response was very consistent.
 
-- Site instantly felt much snappier.
+- Site felt snappier.
 
 - It took little code to accomplish.
 
 - Client approved, the site launched.
 
 ---
-# Page Caching Drawbacks
 
-- "Cache invalidation" required deleting files in /public
+# Page Caching Costs
 
-- Had to refactor a user-specific portion of the site to function through AJAX.
+- Cache invalidation
 
-- Deviated from "The Rails Way."
+- User-specific content
+
+- "The Rails Way"
+
+- Hosting support
 
 ---
+
+# Cache Invalidation
+
+## It's easy...
+## Just delete all of those files Rails wrote!
+
+---
+
+# Cache Invalidation
+
+```ruby
+def files_to_remove
+  `cd public;git status -u`
+    .split("\n")
+    .select { |f| f.starts_with?('#') }
+    .select { |f| f.ends_with?('.html') }
+    .map    { |f| f.gsub('#', '').strip }
+end
+
+files_to_remove.each { |x| `rm public/#{x}` }
+
+```
+
+---
+
+# User-specific Content
+
+User could select their closest dealer.
+
+Layout ERB page: "Your closest dealer is [X]"
+
+Moved message to client-side jQuery render
+
+Data populated through AJAX
+
+---
+
+# Deviating From "The Rails Way"
+
+"Static page caching for Action Pack (removed from core in Rails 4.0)."
+
+"NOTE: It will continue to be officially maintained until Rails 4.1."
+
+"See DHH's key-based cache expiration overview for the newly-preferred method."
+
+## - Rails Docs
+
+---
+
+# Hosting Support
+
+## Can't write to /public, it won't work.
+
+### (looking at you, Heroku)
+
+---
+
+# So When Should You Consider Page Caching?
+
+"Content management systems -- including weblogs and wikis -- have many pages that are a great fit for this approach, but account-based systems where people log in and manipulate their own data are often less likely candidates."
+
+## - Rails Docs
+
+---
+
+# Additional Thoughts
+
+- Page caching is not all-or-nothing.
+
+- Requires planning and thought.
+
+- It could be a way to stretch your hosting dollar.
+
+- May not be elegant, but IT WORKS.
