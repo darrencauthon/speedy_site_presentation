@@ -222,3 +222,13 @@ Data populated through AJAX
 - It could be a way to stretch your hosting dollar.
 
 - May not be elegant, but IT WORKS.
+
+---
+
+#Darren Cauthon
+
+#darren@cauthon.com
+
+#@darrencauthon
+
+#github.com/darrencauthon
