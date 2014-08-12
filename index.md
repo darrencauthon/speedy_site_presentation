@@ -1,16 +1,17 @@
-# Speedy Rails Sites
+# [fit] Speedy
+# [fit] Rails Apps
 
 ---
 
-# Story of an unlaunched website
+# Story of an unlaunched Rails app
 
 - A mobile homepage for a Fortune 50 company.
 
 - Rails, RefineryCMS, jQuery Mobile.
 
-- Client is excited for the site.
+- Client is excited for a mobile site.
 
-- Devs are excited for a green field to use latest tech.
+- Devs are excited for a green field to use latest tech. (jQuery Mobile Beta and MongoDB)
 
 ---
 
@@ -76,7 +77,7 @@ With jQuery Mobile, **the site felt even slower.**
 
 ---
 
-# The Perfect Rails App
+# No Hope?
 
 ![](yingyang.jpg)
 
@@ -98,7 +99,7 @@ class ContentController < ApplicationController
   caches_page :the_slowest_action_in_the_world
 
   def the_slowest_action_in_the_world
-    # my view
+    # same ol' busted code
   end
 
 end
