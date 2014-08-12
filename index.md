@@ -193,6 +193,10 @@ Data populated through AJAX
 
 ---
 
+![fit](page_caching_meme.jpg)
+
+---
+
 # Hosting Support
 
 ## Can't write to /public, it won't work.
